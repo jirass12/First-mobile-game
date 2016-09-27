@@ -1,6 +1,13 @@
 var playState = { 
 
 	create: function() {
+		this.music = game.add.audio('music')
+		
+		
+
+		this.music.volume = 0.2;
+		this.music.loop = true;
+		this.music.play();
 	this.cursor = game.input.keyboard.createCursorKeys(); game.input.keyboard.addKeyCapture([Phaser.Keyboard.UP, Phaser.Keyboard.DOWN,
 	Phaser.Keyboard.LEFT, Phaser.Keyboard.RIGHT]); this.wasd = {
 		up: game.input.keyboard.addKey(Phaser.Keyboard.W),
@@ -35,7 +42,10 @@ var playState = {
 	this.rotateLabel.anchor.setTo(0.5, 0.5);
 	game.scale.onOrientationChange.add(this.orientationChange, this);
 	this.orientationChange();
+
+		
 }
+
 },
 
 
@@ -125,12 +135,15 @@ updateCoinPosition: function() {
 },
 
 
-	playerDie: function() { this.player.kill();
+	playerDie: function() { 
+	this.player.kill();
 	this.deadSound.play();
 	this.emitter.x = this.player.x;
 	this.emitter.y = this.player.y;
 	this.emitter.start(true, 800, null, 15);
-	game.time.events.add(1000, this.startMenu, this); game.camera.shake(0.02, 300);
+	game.camera.shake(0.02, 300);
+	this.music.stop();
+	game.time.events.add(1000, this.startMenu, this); 
 },
 
 	startMenu: function() {

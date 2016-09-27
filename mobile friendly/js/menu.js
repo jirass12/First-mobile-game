@@ -4,12 +4,8 @@ var menuState =
 
 { create: function() {
 
-		this.music = game.add.audio('music')
-		// this.music.fadeIn(500);
-		// this.music.fadeOut(500);
-		this.music.loop = true;
-		this.music.volume = 0.2;
-		this.music.play();
+
+		
 
 		game.add.image(0, 0, 'background');
 		if (!localStorage.getItem('bestScore')) {
